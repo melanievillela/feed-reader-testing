@@ -102,22 +102,18 @@ $(function() {
         * Remember, loadFeed() is asynchronous.
         */
         let container = $('.feed');
-        let compare = [];
         let x;
         let y;
         beforeEach(function(done) {
-
           loadFeed(0);
-          console.log(container);
-          //console.log(container[0].className);
-          //loadFeed(1);
-          //console.log(container[1].className);
-
+          x = container["0"].children["0"].innerText;
+          loadFeed(1);
+          y = container["0"].children["0"].innerText;
           done();
         });
 
         it("Content Changes", function() {
-          expect(x).not.toBe(null);
+          expect(x).not.toEqual(y);
         });
      });
 }());
