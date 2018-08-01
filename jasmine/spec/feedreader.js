@@ -105,11 +105,13 @@ $(function() {
         let x;
         let y;
         beforeEach(function(done) {
-          loadFeed(0);
-          x = container["0"].children["0"].innerText;
-          loadFeed(1);
-          y = container["0"].children["0"].innerText;
-          done();
+          loadFeed(0, function() {
+            x = container["0"].children["0"].innerText;
+            loadFeed(1, function() {
+              y = container["0"].children["0"].innerText;
+              done();
+            });
+          });
         });
 
         it("Content Changes", function() {
