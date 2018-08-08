@@ -62,7 +62,7 @@ $(function() {
     describe('Initial Entries', function() {
 
        //Check that single .entry element in .feed container
-       let container = $('.feed');
+       let container = $('.feed:first-child');
 
        beforeEach(function(done) {
          loadFeed(0);
@@ -70,7 +70,8 @@ $(function() {
        });
 
        it("Contains entry", function() {
-         expect(container.children.length).not.toBe(0);
+         expect(container.children).toBeDefined(true);
+         expect(container.children.length > 0).toBe(true);
        });
      });
 
